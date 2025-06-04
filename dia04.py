@@ -1,5 +1,4 @@
 # sistema de cadastro de exames
-# create, read, update
 
 import sqlite3
 
@@ -52,12 +51,11 @@ def buscar_exames():
                 exame = cursor.fetchone()
                 
                 if exame:
-                    print('Exame encontrado.')
-                    return {
-                        "id":exame[0],
-                        "nome_paciente":exame[1],
-                        "nome_exame":exame[2],
-                        "data_exame":exame[3]}
+                    print("\nExame:")
+                    print(f"ID do exame: {exame[0]} ")
+                    print(f"Nome do paciente: {exame[1]}")
+                    print(f"Nome do exame: {exame[2]}")
+                    print(f"Data do exame: {exame[3]}")
                 else:
                     print('Exame não consta no banco de dados.')
                     
@@ -71,12 +69,6 @@ def atualizar_exame():
             cursor = conexao.cursor()
             
             while True:
-                paciente = input('Digite o nome do paciente que deseja alterar o exame: ')
-                
-                cursor.execute(""" SELECT * FROM exames WHERE nome_paciente = ? """, (paciente,))
-                paciente_procurado = cursor.fetchone()
-                
-                if paciente_procurado:
                     alteracao = input('Digite o ID do exame que deseja alterar:')
                     
                     cursor.execute(""" SELECT * FROM exames WHERE id =  ? """, (alteracao,))
@@ -84,19 +76,41 @@ def atualizar_exame():
                     exame_procurado = cursor.fetchone()
                     
                     if exame_procurado:
+                        print("\nExame:")
+                        print(f"ID do exame: {exame_procurado[0]} ")
+                        print(f"Nome do paciente: {exame_procurado[1]}")
+                        print(f"Nome do exame: {exame_procurado[2]}")
+                        
                         alterar = input('Digite o que deseja alterar (exame/data): ')
                         
                         if alterar == 'exame':
                             novo_exame = input('Digite a alteração a  ser feita: ')
                             
-                            cursor.execute(""" UPDATE exames SET nome_exame = ? WHERE id = ? """, novo_exame, alteracao, )
+                            cursor.execute(""" UPDATE exames SET nome_exame = ? WHERE id = ? """, (novo_exame, alteracao))
                             
                             conexao.commit()
                             
-                            print('Exame atualizado com sucesso.')
+                            print('Exame alterado com sucesso.')
+                        
+                        elif alterar == 'data':
+                            nova_data = input('Digite a alteração a ser feita: ')
+                            
+                            cursor.execute(""" UPDATE exames SET data_exame = ? WHERE id = ? """, (nova_data, alteracao))
+                            
+                            conexao.commit()
+                            
+                            print('Exame alterado com sucesso.')
+                            
+                        else:
+                            print('Opção inválida.')
+                    
+                    else: 
+                        print('Exame não encontrado.')
+                        
+                    continuar = input('Deseja alterar mais exames? (s/n)')
+                    if continuar != 's':
+                       break
                                      
         
     except sqlite3.Error as erro:
         print(f'Erro ao atualizar exame: {erro}.')
-        
-        
