@@ -1,10 +1,15 @@
 # sistema de cadastro de alunos
 
 import sqlite3
+import os
+
+script_diretorio = os.path.dirname(__file__)
+
+caminho_db = os.path.join(script_diretorio, "db", "alunos.db")
 
 def criar_banco_de_dados():
     try:
-        with sqlite3.connect("alunos.db") as conexao:
+        with sqlite3.connect(caminho_db) as conexao:
             cursor = conexao.cursor()
             
             cursor.execute(""" CREATE TABLE IF NOT EXISTS alunos (

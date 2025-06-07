@@ -1,11 +1,16 @@
 # sistema de cadastro de pacientes
 
 import sqlite3
+import os
+
+script_diretorio = os.path.dirname(__file__)
+
+caminho_db = os.path.join(script_diretorio, "db", "dbpacientes.db")
 
 def criar_banco_de_dados():
     """" Função para criar banco de dados """
     try:
-        with sqlite3.connect("dbpacientes.db") as conexao:
+        with sqlite3.connect(caminho_db) as conexao:
             cursor = conexao.cursor()
             
             cursor.execute(""" CREATE TABLE IF NOT EXISTS pacientes (
