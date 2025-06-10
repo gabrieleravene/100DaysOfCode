@@ -98,7 +98,7 @@ def calcular_dm2():
         
     
     while True:
-        has = input(' Você já tomou regularmente algum medicamento para pressão alta? Responda com SIM ou NÃO').strip().lower()
+        has = input('Você já tomou regularmente algum medicamento para pressão alta? Responda com SIM ou NÃO').strip().lower()
         if has not in ['sim', 'não']:
             print('Valor inválido. Tente novamente.')
         else:
