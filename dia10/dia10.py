@@ -77,7 +77,7 @@ def calcular_dm2():
         
     
     while True:
-        exercicio_fisico = input('Você faz ao menos 30 minutos de exercícios físicos no trabalho e/ou em seu tempo livre (incluindo atividades normais diárias)? Responda com SIM ou NÃO').strip().lower()
+        exercicio_fisico = input('Você faz ao menos 30 minutos de exercícios físicos no trabalho e/ou em seu tempo livre (incluindo atividades normais diárias)?').strip().lower()
         if exercicio_fisico not in ['sim', 'não']:
             print('Valor inválido. Tente novamente.')
         else:
@@ -87,7 +87,7 @@ def calcular_dm2():
         pontuacao += 2
         
     while True:
-        alimentacao = input('Você come legumes, frutas ou sementes com frequência? Responda com SIM ou NÃO').strip().lower()
+        alimentacao = input('Você come legumes, frutas ou sementes com frequência?').strip().lower()
         if alimentacao not in ['sim', 'não']:
             print('Valor inválido. Tente novamente.')
         else:
@@ -98,7 +98,7 @@ def calcular_dm2():
         
     
     while True:
-        has = input('Você já tomou regularmente algum medicamento para pressão alta? Responda com SIM ou NÃO').strip().lower()
+        has = input('Você já tomou regularmente algum medicamento para pressão alta?').strip().lower()
         if has not in ['sim', 'não']:
             print('Valor inválido. Tente novamente.')
         else:
@@ -108,7 +108,7 @@ def calcular_dm2():
         pontuacao += 2
         
     while True:
-        hiperglicemia = input('A sua taxa de glicose no sangue já foi alguma vez considerada alta? Responda com SIM ou NÃO').strip().lower()
+        hiperglicemia = input('A sua taxa de glicose no sangue já foi alguma vez considerada alta?').strip().lower()
         if hiperglicemia not in ['sim', 'não']:
             print('Valor inválido. Tente novamente.')
         else:
@@ -154,5 +154,5 @@ def calcular_dm2():
             risco_classificado = risco
             break
         
-    print(f'\n{nome}, sua pontução é {pontuacao}')
+    print(f'\n{nome}, sua pontuação é {pontuacao}')
     print(f'Isso significa que você possui um risco {risco_classificado} de desenvolver Diabetes tipo 2.')
